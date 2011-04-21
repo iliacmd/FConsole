@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="FConsole" default="build.lib">
+	<property name="sdk4" value="C:/FlexSDK4"></property>
+	<property name="sdk4.bin" value="${sdk4}/bin"></property>
+	<property name="dir.output" value="../release"/>
+	<property name="dir.source" value="../src" />
+	<property name="dir.project" value="../" />
+	
+	<target name="build.lib">
+		<echo>Build Component Library</echo>
+		<echo>${sdk4.bin}</echo>
+		<mkdir dir="../release"/>
+		<exec dir='${basedir}' executable='${sdk4.bin}/compc.exe' >
+			<arg line="-namespace http://iliacmd.corporate ../manifest.xml" />
+			<arg line="-source-path ${dir.source}" />
+			<arg line="-include-classes com.iliacmd.fconsole.FConsole" />
+			<arg line="-output ${dir.output}/FConsole.swc" />			
+		</exec>
+	</target>
+	
+</project>
